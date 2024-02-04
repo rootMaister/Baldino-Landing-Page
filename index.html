@@ -1,19 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="lenis-scrolling">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-    <script src="https://unpkg.com/scrollreveal" ></script>
+    <title>GI BALDINO</title>
     <script src="knowMulti.js" async></script>
 
-    <script>
-      ScrollReveal({reset: true});
-    </script>
-
     <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
   </head>
+
+  <script>
+
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      wheelMultiplier: 1,
+    });
+
+    // lenis.on('scroll', (e) => {
+    //   console.log(e)
+    // })
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+  </script>
 
   <script>
     window.onSpotifyIframeApiReady = (IFrameAPI) => {
@@ -62,8 +78,24 @@
     </div>
 
     <div class="cover">
-      <div class="baldino_container">
-        <div class="baldino_photo"></div>
+      <div id="baldino_container">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+
+        <div id="animation_container">
+        </div>
+        <script>
+          bodymovin.loadAnimation({
+            container: document.getElementById("animation_container"),
+            path: 'https://lottie.host/fe34554d-67f6-499e-8185-ddf8d445f616/uXFQYrjrk9.json',
+            rendererSettings: {
+              viewBoxSize: false,
+              preserveAspectRatio: 'xMidYMid slice',
+            }
+          })
+        </script>
+
+        <img src="assets/gibaldino.jpg" class="baldino_photo"></div>
       </div>
     </div>
 
@@ -150,9 +182,9 @@
       </div>
     </section>
 
-    <script>
+    <!-- <script>
       ScrollReveal().reveal('.about', {delay: 100});
-    </script>
+    </script> -->
 
     
 
@@ -166,15 +198,9 @@
 
         <div class="cassette-frame">
           <h2 id="cassette-data">Temos X episódios!</h2>
-          <!-- <img src="./assets/cassette.svg" width="500px" height="100%" /> -->
         </div>
       </div>
     </section>
-
-    <script>
-      ScrollReveal().reveal('.podcast', {delay: 100});
-    </script>
-    
 
     <section class="redes">
       <div>
@@ -186,7 +212,7 @@
           </p>
         </div>
       </div>
-      <!-- <img id="phone" src="./assets/phone.svg" /> -->
+
       <div id="phone">
         <div class="appbar">
           <p class="phone-time">
@@ -205,7 +231,6 @@
       </div>
     </section>
 
-
     <script>
       const date = new Date().toLocaleTimeString('default', {hour: '2-digit', minute: '2-digit'}, 1000);
 
@@ -214,13 +239,8 @@
       console.log(date);
 
     </script>
-    
+
     <!-- <script>
-      ScrollReveal().reveal('.redes', {delay: 100});
-    </script> -->
-
-
-    <script>
       section = document.querySelector('.redes');
       sectionBounds = document.querySelector('.redes').getBoundingClientRect();
 
@@ -232,7 +252,6 @@
       var observer = new IntersectionObserver(function(entries) {
 
           if(entries[0].isIntersecting === true){
-            // console.log('Element has just become visible in screen');
             phone.classList.add('fix-phone');
             section.style= `height: ${sectionHeight.toString()} !important`;
             console.log(sectionHeight);
@@ -240,38 +259,11 @@
         }, { threshold: [1] });
 
         observer.observe(document.querySelector("#phone"));
+
+        document.querySelector("#phone").style.color = '#212121';
         
-    </script>
+    </script> -->
 
-    <section class="podcast">
-      <h2>Meu podcast</h2>
-
-      <div class="container">
-        <div class="podcast-embed-frame">
-          <div id="embed-iframe"></div>
-        </div>
-
-        <div class="cassette-frame">
-          <h2 id="cassette-data">Temos X episódios!</h2>
-          <!-- <img src="./assets/cassette.svg" width="500px" height="100%" /> -->
-        </div>
-      </div>
-    </section>
-
-    <section class="podcast">
-      <h2>Meu podcast</h2>
-
-      <div class="container">
-        <div class="podcast-embed-frame">
-          <div id="embed-iframe"></div>
-        </div>
-
-        <div class="cassette-frame">
-          <h2 id="cassette-data">Temos X episódios!</h2>
-          <!-- <img src="./assets/cassette.svg" width="500px" height="100%" /> -->
-        </div>
-      </div>
-    </section>
-
+    
   </body>
 </html>
