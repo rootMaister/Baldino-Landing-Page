@@ -148,16 +148,16 @@ body {
   width: 250px;
 }
 
-.about {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-}
-
 .card-group {
   display: flex;
   padding: 64px;
+  max-width: 1700px;
+}
+
+.container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .card {
@@ -198,70 +198,94 @@ button:active{
 .podcast {
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
-  padding: 64px;
   color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.podcast .card{
+  border: none;
+  display: flex;
+  justify-content: end;
+}
+
+.podcast .card-group{
+  width: 100%;
+}
+
+#cassette-frame{
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  max-height: 400px;
 }
 
 .podcast h2{
-  margin-bottom: 8px;
-}
-
-.podcast .container {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
-}
-
-.podcast-embed-frame{
-  width: 50%;
-}
-
-.cassette-frame{
-  height: 356px;
-  width: 50%;
-  background-image: url(assets/cassette.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: auto;
+  margin-bottom: 30px;
 }
 
 #cassette-data{
   position: relative;
-  top: 87px;
-  left: 0;
   text-align: center;
+  text-transform: uppercase;
+  /* text-decoration: underline double; */
+  font-size: 20px;
+  font-weight: bolder;
+  z-index: 1;
+  top: 110px;
 }
 
 p span {
   background-color: var(--span-background-color);
   color: var(--span-text-color);
+  padding: 0px 8px 0px 8px;
 }
 
 .redes {
-  height: 30vh;
   display: flex;
   align-items: center;
-  padding-left: 64px;
-  padding-right: 64px;
-  justify-content: space-between;
   border-bottom: 1px solid var(--border-color);
-  gap: 44px;
+  /* min-height: 500px; */
+}
+
+.redes .card-group{
+  width: 100%;
 }
 
 
+.redes .card-group .phone{
+  padding: 0;
+  align-items: center;
+  border: none;
+}
+
+.social{
+  max-height: 100px;
+}
 
 #phone{
-  height: 30vh;
-  width: 20%;
+  height: 0px;
+  width: 100%;
+  max-width: 300px;
   border: 1px solid var(--border-color);
   border-bottom: 0px; 
   border-radius: 30px 30px 0px 0px;
   background-color: var(--background-color);
+  padding: 24px 16px;
+  position: relative;
+  bottom: -10px;
+  z-index: 1;
+  transition: height 0.2s ease-in-out, bottom 0.2s ease-in-out;
 }
 
+/* #phone:hover{
+  bottom: 30px;
+  background-color: red;
+} */
+
 #phone .appbar{
-  margin: 24px 16px;
+  
   display: flex;
   justify-content: space-between;
 
@@ -276,7 +300,7 @@ p span {
     height: 30px;
     width: 400px;
     border: 1px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: 24px;
     margin: 0px 16px 0px 16px;
   }
 
@@ -289,16 +313,50 @@ p span {
   .bar-icons img{
     margin: 0px 3px 0px 3px;
   }
-
 }
 
-.fix-phone{
-  position: fixed;
-  bottom: 0;
-  right: 64px;
-  z-index: 1;
+.apps{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
+.apps-label{
+  margin-top: 32px;
+  margin-left: 16px;
+}
+
+
+.apps .button{
+  padding: 0px;
+  height: 100vh;
+  max-height: 65px;
+  width: 100vw;
+  max-width: 65px;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 18px;
+}
+
+.linkedin{
+  background-image: url(assets/icons/phone/linkedin.png); 
+}
+
+.tiktok{
+  background-image: url(assets/icons/phone/tiktok.png);
+  background-color: white !important; 
+}
+
+.instagram{
+  background-image: url(assets/icons/phone/instagram.png); 
+}
+
+.spotify{
+  background-image: url(assets/icons/phone/spotify.png);
+}
 
 @media screen and (max-width: 767px){
   .card-group, .podcast .container, .redes{
