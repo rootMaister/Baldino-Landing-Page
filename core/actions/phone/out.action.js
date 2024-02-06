@@ -1,0 +1,1 @@
+const phoneOutAction = () => phone.style.height = '200px';

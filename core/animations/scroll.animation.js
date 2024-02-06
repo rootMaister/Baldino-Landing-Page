@@ -1,4 +1,4 @@
-const aboutAnimation = gsap.from(".about-move-group", {
+const scrollAboutAnimation = gsap.from(".about-move-group", {
     y: 600,
     scrollTrigger: {
         trigger: ".cover",
@@ -9,7 +9,7 @@ const aboutAnimation = gsap.from(".about-move-group", {
     }
 })
 
-const podcastAnimation = gsap.from(".podcast", {
+const scrollPodcastAnimation = gsap.from(".podcast", {
     y: 300,
     scrollTrigger: {
         trigger: ".about",
@@ -20,7 +20,7 @@ const podcastAnimation = gsap.from(".podcast", {
     }
 })
 
-const socialAnimation = gsap.from(".social", {
+const scrollSocialAnimation = gsap.from(".social", {
     y: 300,
     scrollTrigger: {
         trigger: ".podcast",
