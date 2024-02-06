@@ -9,29 +9,30 @@
     <script src="knowMulti.js" async></script>
     <script src="titleAnimation.js" async></script>
     <script src="scrollTransitions.js" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" await></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" await></script>
     <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
 
   </head>
 
-  <script>
-
+  <script >
+    
+    gsap.registerPlugin(ScrollTrigger);
 
     const lenis = new Lenis({
-      duration: 1.2,
-      wheelMultiplier: 1,
+        duration: 2,
+        easing: (t) => Math.min(1.001 - Math.pow(2, -10 * t))
     });
 
-    // lenis.on('scroll', (e) => {
-    //   console.log(e)
-    // })
 
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
+    function raf(time){
+        lenis.raf(time);
+        requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf)
+    requestAnimationFrame(raf);
+    
   </script>
 
   <script>
@@ -39,9 +40,14 @@
       const element = document.getElementById("embed-iframe");
       const options = {
         uri: "spotify:episode:2AzvBrzASU1LGyKfDcL31S",
+        scroll: false,
+
       };
       const callback = (EmbedController) => {};
       IFrameAPI.createController(element, options, callback);
+
+      
+     
     };
   </script>
 
@@ -69,8 +75,6 @@
 
   <body>
 
-    
-    
     <div class="nav">
       <a href="#">BE MULTI</a>
       '<a href="#">início</a>
@@ -86,12 +90,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
         
         <div id="animation_container">
+          <!-- <lottie-player id="teste" src="https://lottie.host/bcdf90c1-b1c3-470f-9cc5-ee9a7756e369/vcsOovySyC.json"> -->
         </div>
-        <script>
-          
-        </script>
 
-        <img src="assets/gibaldino.jpg" class="baldino_photo"></div>
+        <!-- <img src="assets/gibaldino.jpg" class="baldino_photo"></div> -->
       </div>
     </div>
 
@@ -148,9 +150,9 @@
     </div>
 
     <section class="about container">
-      <div class="card-group">
+      <div class="card-group about-move-group">
 
-        <div class="card about-paragraph">
+        <div class="card ">
           <h2>Sobre</h2>
           <p>
             Eu sou a <span>Giovanna Baldino :)</span> Tenho 22 anos, sou formada
@@ -177,11 +179,14 @@
     </section>
 
     <section class="podcast container">
-      <div class="card-group">
+      <div class="card-group podcast-move-group">
 
         <div class="card">
           <h2>Meu podcast</h2>
-          <div id="embed-iframe"></div>
+          
+          <div id="embed-iframe">
+            <div class="smooth-fix"></div>
+          </div>
         </div>
 
         <div class="card">
@@ -239,16 +244,13 @@
 
     <script>
       function phoneHover(){
-        phone.style.height = document.querySelector("#phone").style.height + 100;
-        console.log("Funciona");
-        console.log(document.querySelector("#phone").style.height);
-
         phone.style.height = '230px';
       }
 
       function phoneOut(){
         phone.style.height = '200px';
       }
+
     </script>
 
     <script>
@@ -274,12 +276,10 @@
         phone.style.position = 'fixed';
         phone.style.height = '200px';
         phone.style.bottom = '0';
-        console.log("visivel")
         
       }else{
         phone.style.position = 'fixed';
         phone.style.bottom = '-350px';
-        console.log("nao visivel")
       }
       }, { 
         threshold: [0.1]
@@ -374,8 +374,7 @@
       </div>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" await></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" await></script>
+    
     
     </script>
     
