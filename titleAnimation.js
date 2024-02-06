@@ -1,28 +1,11 @@
-// let player = document.getElementById("teste");
-
-// player.addEventListener("ready", () => {
-//   LottieInteractivity.create({
-//         mode:"scroll",
-//         player: "#teste",
-//         actions: [
-//         {
-//             visibility:[0, 1.0],
-//             type: "seek",
-//             frames: [0, 300],
-//         },
-//         ]
-//       });
-// });
-
 var titleAnimation = bodymovin.loadAnimation({
         container: document.getElementById("animation_container"),
-        path: 'https://lottie.host/bcdf90c1-b1c3-470f-9cc5-ee9a7756e369/vcsOovySyC.json',
+        path: 'https://lottie.host/a778160e-9da4-40b0-82ea-40dd1f4a0226/qDe8BYONMD.json',
         rendererSettings: {
         viewBoxSize: false,
         preserveAspectRatio: 'xMidYMid slice'
     }
   })
-
 
   var cassetteAnimation = bodymovin.loadAnimation({
     container: document.getElementById("cassette-frame"),
