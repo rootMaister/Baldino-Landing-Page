@@ -4,6 +4,7 @@ html {
   scroll-behavior: unset;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  cursor: none;
 }
 
 html::-webkit-scrollbar{
@@ -44,6 +45,12 @@ html, body {
   --span-background-color: #000000;
 }
 
+
+a{
+  color: var(--text-color);
+}
+
+
 body {
   justify-content: center;
   background-color: var(--background-color);
@@ -51,10 +58,43 @@ body {
   overflow-x: hidden;
 }
 
+.cursor{
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /* background: #ffffff; */
+  border: #ffffff 1px solid;
+  transition: 0.1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9;
+  mix-blend-mode: difference;
+}
+
+.cursor-dot{
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: #ffffff 1px solid;
+  transition: 0.1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9;
+  mix-blend-mode: difference;
+}
+
+
 .cover {
   padding-top: 82px;
   width: 100vw;
-  height: 80vh;
+  height: 75vh;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
@@ -64,7 +104,8 @@ body {
 #baldino_container {
   display: flex;
   width: 100%;
-  height: 80vh;
+  height: 70vh;
+  position: fixed;
 }
 
 .lottie-animation{
@@ -74,10 +115,13 @@ body {
   bottom: 0;
 }
 
+#animation_container{
+  width: 100vw;
+}
+
 .baldino_photo {
-  height: 100%;
-  border-radius: 32px 0px 0px 0px;
-  top: 0;;
+  width: 65%;
+  border-radius: 32px 32px 32px 32px;
 }
 
 #embed-iframe{
@@ -93,13 +137,6 @@ body {
     }
 }
 
-/* .smooth-fix{
-  height: 100%;
-  width: 100%;
-  background-color: red;
-  position: absolute;
-} */
-
 
 .nav {
   display: flex;
@@ -107,6 +144,7 @@ body {
   background-color: var(--background-color);
   width: 100vw;
   justify-content: space-between;
+  align-items: center;
   border-bottom: solid var(--border-color) 1px;
   position: fixed;
 }
@@ -187,23 +225,35 @@ body {
 
 .container{
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
+}
+
+.non-fixed{
+  width: 100%;
+  position: absolute;
+  background-color: var(--background-color);
 }
 
 .card {
   display: flex;
   flex-direction: column;
   flex: 1;
-  border: 1px solid var(--border-color);
-  padding: 32px;
+  padding: 64px;
   color: var(--text-color);
   text-align: justify;
+  justify-content: center;
+  align-items: center;
 }
 
 .card h2 {
   color: var(--text-color) !important;
   margin-bottom: 8px;
+  text-align: left;
+  width: 100%;
+  font-size: 32px;
+  font-weight: 400;
 }
 
 button {
@@ -216,6 +266,11 @@ button {
   font-weight: 900;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.about-paragraph{
+  font-size: 18px;
+  font-weight: 300;
 }
 
 button:active{
@@ -267,11 +322,11 @@ button:active{
   top: 110px;
 }
 
-p span {
-  background-color: var(--span-background-color);
-  color: var(--span-text-color);
-  padding: 0px 8px 0px 8px;
-}
+/* p span {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-color);
+  padding: 0px 8px 4px 8px;
+} */
 
 .redes {
   display: flex;
@@ -387,6 +442,9 @@ p span {
 @media screen and (max-width: 767px){
   .card-group, .podcast .container, .redes{
     flex-direction: column;
+  }
+  .nav{
+    display: none;
   }
 }
 

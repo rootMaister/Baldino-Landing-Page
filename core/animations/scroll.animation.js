@@ -26,7 +26,7 @@ const scrollSocialAnimation = gsap.from(".social", {
         trigger: ".podcast",
         start: "top center",
         end: "center center",
-        markers: true,
+        markers: false,
         scrub: true
     }
 })

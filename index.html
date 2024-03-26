@@ -13,6 +13,7 @@
   <script src="./core/animations/cassette.animation.js" async></script>
   <script src="./core/animations/title.animation.js" async></script>
   <script src="./core/animations/scroll.animation.js" async></script>
+  <script src="core/animations/cursor.animation.js" async></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" await></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" await></script>
@@ -21,22 +22,22 @@
 </head>
 
 <script>
-
+  
   gsap.registerPlugin(ScrollTrigger);
-
+  
   const lenis = new Lenis({
     duration: 2,
     easing: (t) => Math.min(1.001 - Math.pow(2, -10 * t))
   });
-
-
+  
+  
   function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
   }
-
+  
   requestAnimationFrame(raf);
-
+  
 </script>
 
 <script>
@@ -45,7 +46,7 @@
     const options = {
       uri: "spotify:episode:2AzvBrzASU1LGyKfDcL31S",
       scroll: false,
-
+      
     };
     const callback = (EmbedController) => { };
     IFrameAPI.createController(element, options, callback);
@@ -54,8 +55,8 @@
 
 <script>
   const token =
-    "BQAoHmuxJyYLRp8yZ8InuPICorjEaxsQbqwTDJCJ6nyaYhOc3JuQd7Q3y3_ZatRfH_cutUXN9HGSlEC6qY-0TE27hTUsZ_v7bC9FPqi3wNZpqTC5pe9YY4pVs3Do3MgrLgCJ1u8JShkG4yt-HoPZR7eG2WHbcHZGww_1CTWVXyRMd6xFcM6hm8bbKV-NE38TILhsVGEHSJYJBwhPLksvnaesez11-GeDIn3I4K2NFP6_cSk-b0My48jh9RIt-RYpWbhjG8AS1T1XuQWui28eJeq8";
-
+  "BQAoHmuxJyYLRp8yZ8InuPICorjEaxsQbqwTDJCJ6nyaYhOc3JuQd7Q3y3_ZatRfH_cutUXN9HGSlEC6qY-0TE27hTUsZ_v7bC9FPqi3wNZpqTC5pe9YY4pVs3Do3MgrLgCJ1u8JShkG4yt-HoPZR7eG2WHbcHZGww_1CTWVXyRMd6xFcM6hm8bbKV-NE38TILhsVGEHSJYJBwhPLksvnaesez11-GeDIn3I4K2NFP6_cSk-b0My48jh9RIt-RYpWbhjG8AS1T1XuQWui28eJeq8";
+  
   async function fetchWebApi(endpoint, method, body) {
     const res = await fetch(`https://api.spotify.com/${endpoint}`, {
       headers: {
@@ -64,189 +65,190 @@
       method,
       body: JSON.stringify(body),
     });
-
+    
     res.json().then((data) => {
       const element = document.getElementById("cassette-data");
-      element.innerText = `Totalizando ${data.total_episodes} episódios`;
+      element.innerText = `Totalizando 80+ episódios`;
     });
   }
-
+  
   fetchWebApi("v1/shows/7u6FZwkBNf7fW6csb5eEf4", "GET");
 </script>
 
 <body>
-
+  
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+  
   <div class="nav">
     <a href="#">BE MULTI</a>
-    <a href="#">início</a>
-    <a href="#about">sobre</a>
-    <a href="#">#publi</a>
-    <a href="#">um por cento mais</a>
-    <a href="#">contato</a>
+    <div class="anchor-list">
+      <a href="#">início</a>
+      <a href="#">sobre</a>
+      <a href="#">#publi</a>
+      <a href="#">um por cento mais</a>
+      <a href="#">contato</a>
+    </div>
   </div>
 
   <div class="cover">
     <div id="baldino_container">
-      <div id="animation_container">
-      </div>
-      <img src="assets/gibaldino.jpg" class="baldino_photo">
+      <div id="animation_container"></div>
     </div>
   </div>
-  </div>
-
-  <div class="text_carroussel">
-    <div class="slider">
-      <div class="slide-track">
-        <div class="slide">
-          <p>impacto</p>
-        </div>
-        <div class="slide">
-          <p>Organização</p>
-        </div>
-        <div class="slide">
-          <p>responsabilidade</p>
-        </div>
-        <div class="slide">
-          <p>excelência</p>
-        </div>
-        <div class="slide">
-          <p>be multi</p>
-        </div>
-        <div class="slide">
-          <p>impacto</p>
-        </div>
-        <div class="slide">
-          <p>Organização</p>
-        </div>
-        <div class="slide">
-          <p>responsabilidade</p>
-        </div>
-        <div class="slide">
-          <p>excelência</p>
-        </div>
-        <div class="slide">
-          <p>be multi</p>
-        </div>
-        <div class="slide">
-          <p>impacto</p>
-        </div>
-        <div class="slide">
-          <p>Organização</p>
-        </div>
-        <div class="slide">
-          <p>responsabilidade</p>
-        </div>
-        <div class="slide">
-          <p>excelência</p>
-        </div>
-        <div class="slide">
-          <p>be multi</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <section class="about container">
-    <div class="card-group about-move-group">
-      <div class="card ">
-        <h2>Sobre</h2>
-        <p>
-          Eu sou a <span>Giovanna Baldino :)</span> Tenho 22 anos, sou formada
-          em Sistemas de Informação pela ESPM, sou host do
-          podcast <span>um por cento mais!</span> Quando eu tinha 13 anos,
-          criei a <span>Multi</span>, uma personagem que iria
-          mudar meu futuro.
-        </p>
-        <button id="knowMulti">Sobre a Multi</button>
-      </div>
-      <div class="card">
-        <h2>Skills</h2>
-        <li>Organização</li>
-        <li>Gerenciamento de projeto</li>
-        <li>Inglês Fluente</li>
-        <li>Espanhol Fluente</li>
-        <li>Gamer</li>
-        <li>Contadora de piadas horríveis</li>
-        <li>Criação de conteúdo</li>
-      </div>
-    </div>
-  </section>
-  <section class="podcast container">
-    <div class="card-group podcast-move-group">
-      <div class="card">
-        <h2>Meu podcast</h2>
-        <div id="embed-iframe">
-          <div class="smooth-fix"></div>
-        </div>
-      </div>
-      <div class="card">
-        <div id="cassette-frame">
-          <p id="cassette-data">Temos X episódios!</p>
+  <div class="non-fixed">
+    <div class="text_carroussel">
+      <div class="slider">
+        <div class="slide-track">
+          <div class="slide">
+            <p>impacto</p>
+          </div>
+          <div class="slide">
+            <p>Organização</p>
+          </div>
+          <div class="slide">
+            <p>responsabilidade</p>
+          </div>
+          <div class="slide">
+            <p>excelência</p>
+          </div>
+          <div class="slide">
+            <p>be multi</p>
+          </div>
+          <div class="slide">
+            <p>impacto</p>
+          </div>
+          <div class="slide">
+            <p>Organização</p>
+          </div>
+          <div class="slide">
+            <p>responsabilidade</p>
+          </div>
+          <div class="slide">
+            <p>excelência</p>
+          </div>
+          <div class="slide">
+            <p>be multi</p>
+          </div>
+          <div class="slide">
+            <p>impacto</p>
+          </div>
+          <div class="slide">
+            <p>Organização</p>
+          </div>
+          <div class="slide">
+            <p>responsabilidade</p>
+          </div>
+          <div class="slide">
+            <p>excelência</p>
+          </div>
+          <div class="slide">
+            <p>be multi</p>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-  <section class="redes container">
-    <div class="card-group">
-      <div class="social card">
-        <h2>Minhas redes</h2>
-        <p>
-          Meus perfis tem como objetivo <span>gerar impacto</span> em pessoas
-          que buscam <span>autoaprimoramento</span> constante.
-        </p>
+    <section id="about" class="about container">
+      <div class="card-group about-move-group">
+        <div class="card ">
+          <h2>Sobre</h2>
+          <p class="about-paragraph">
+            Eu sou a Giovanna Baldino. Tenho 22 anos, sou formada em Sistemas de Informação pela ESPM, sou host do podcast <a href="#podcast-anchor">um por cento mais!</a> Quando eu tinha 13 anos, criei a <a href="">Multi</a>, uma personagem que iria mudar meu futuro.
+          </p>
+          <!-- <button id="knowMulti">Sobre a Multi</button> -->
+        </div>
+        <div class="card">
+          <img src="assets/gibaldino.jpg" class="baldino_photo">
+        </div>
       </div>
-      <div class="card phone">
-        <div id="phone" onmouseover="phoneHoverAction()" onmouseleave="phoneOutAction()">
-          <script src="./core/actions/phone/index.js"></script>
-          <script src="./core/actions/phone/hover.action.js"></script>
-          <script src="./core/actions/phone/out.action.js"> </script>
-          <div class="appbar">
-            <p class="phone-time">
-              teste
-            </p>
-            <div class="sensor"></div>
-            <div class="bar-icons">
-              <img src="assets/icons/Cellular Connection.svg" alt="">
-              <img src="assets/icons/Wifi.svg" alt="">
-              <img src="assets/icons/Battery.svg" alt="">
+    </section>
+    <section id="podcast-anchor" class="podcast container">
+      <div class="card-group podcast-move-group">
+        <div class="card">
+          <h2>Meu podcast</h2>
+          <div id="embed-iframe">
+            <div class="smooth-fix"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div id="cassette-frame">
+            <p id="cassette-data">Temos X episódios!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="redes container">
+      <div class="card-group">
+        <div class="social card">
+          <h2>Minhas redes</h2>
+          <p>
+            Meus perfis tem como objetivo <span>gerar impacto</span> em pessoas
+            que buscam <span>autoaprimoramento</span> constante.
+          </p>
+        </div>
+        <div class="card phone">
+          <div id="phone" onmouseover="phoneHoverAction()" onmouseleave="phoneOutAction()">
+            <script src="./core/actions/phone/index.js"></script>
+            <script src="./core/actions/phone/hover.action.js"></script>
+            <script src="./core/actions/phone/out.action.js"> </script>
+            <div class="appbar">
+              <p class="phone-time">
+                teste
+              </p>
+              <div class="sensor"></div>
+              <div class="bar-icons">
+                <img src="assets/icons/Cellular Connection.svg" alt="">
+                <img src="assets/icons/Wifi.svg" alt="">
+                <img src="assets/icons/Battery.svg" alt="">
+              </div>
+            </div>
+            <p class="apps-label">MEUS LINKS</p>
+            <div class="apps">
+              <a href="https://www.linkedin.com/in/giovanna-baldino/" target="_blank">
+                <button class="linkedin button"></button>
+              </a>
+              <a href="https://www.tiktok.com/@gi.baldino" target="_blank"> 
+                <button class="tiktok button"></button>
+              </a>
+              <a href="https://www.instagram.com/gi.baldino/" target="_blank">
+                <button class="instagram button"></button>
+              </a>
+              <a href="https://open.spotify.com/show/7u6FZwkBNf7fW6csb5eEf4" target="_blank">
+                <button class="spotify button"></button>
+              </a>
             </div>
           </div>
-          <p class="apps-label">MEUS LINKS</p>
-          <div class="apps">
-            <button class="linkedin button"></button>
-            <button class="tiktok button"></button>
-            <button class="instagram button"></button>
-            <button class="spotify button"></button>
-          </div>
         </div>
       </div>
-    </div>
-  </section>
-  <script src="./core/actions/phone/datetime.action.js"></script>
-  <script src="./core/actions/phone/observer.action.js"></script>
-  <section class="about container">
-    <div class="card-group">
-      <div class="card">
-        <h2>Sobre</h2>
-        <p>
-          Eu sou a <span>Giovanna Baldino :)</span> Tenho 22 anos, sou formada
-          em Sistemas de Informação pela ESPM, sou host do
-          podcast <span>um por cento mais!</span> Quando eu tinha 13 anos,
-          criei a <span>Multi</span>, uma personagem que iria
-          mudar meu futuro.
-        </p>
-        <button id="knowMulti">Sobre a Multi</button>
+    </section>
+    <script src="./core/actions/phone/datetime.action.js">
+    </script>
+    <script src="./core/actions/phone/observer.action.js"></script>
+    <section class="about container">
+      <div class="card-group">
+        <div class="card">
+          <h2>Sobre</h2>
+          <p>
+            Eu sou a <span>Giovanna Baldino :)</span> Tenho 22 anos, sou formada
+            em Sistemas de Informação pela ESPM, sou host do
+            podcast <span>um por cento mais!</span> Quando eu tinha 13 anos,
+            criei a <span>Multi</span>, uma personagem que iria
+            mudar meu futuro.
+          </p>
+          <button id="knowMulti">Sobre a Multi</button>
+        </div>
+        <div class="card">
+          <h2>Skills</h2>
+          <li>Organização</li>
+          <li>Gerenciamento de projeto</li>
+          <li>Inglês Fluente</li>
+          <li>Espanhol Fluente</li>
+          <li>Gamer</li>
+          <li>Contadora de piadas horríveis</li>
+          <li>Criação de conteúdo</li>
+        </div>
       </div>
-      <div class="card">
-        <h2>Skills</h2>
-        <li>Organização</li>
-        <li>Gerenciamento de projeto</li>
-        <li>Inglês Fluente</li>
-        <li>Espanhol Fluente</li>
-        <li>Gamer</li>
-        <li>Contadora de piadas horríveis</li>
-        <li>Criação de conteúdo</li>
-      </div>
-    </div>
-  </section>
+    </section>
+</div>
 </body>
 </html>
